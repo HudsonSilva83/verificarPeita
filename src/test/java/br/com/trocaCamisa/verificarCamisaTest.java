@@ -10,10 +10,7 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
-
 import org.apache.commons.mail.EmailException;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -190,7 +187,7 @@ public class verificarCamisaTest {
 
 	}
 
-	@After
+	@AfterEach
 	public void fechar() {
 
 		driver.close();
