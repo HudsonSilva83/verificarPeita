@@ -142,6 +142,11 @@ public class verificarCamisaTest {
 		driver.findElement(By.xpath("//*[.='Ir para sua conta']")).click();
 
 		Thread.sleep(3000);
+		
+		@SuppressWarnings("deprecation")
+		WebDriverWait wait2 = new WebDriverWait(driver, 40);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("ORDER")));
+		
 		driver.findElement(By.id("ORDER")).click();
 		driver.findElement(By.cssSelector("a[href=\"/order-tracker\"]")).click();
 		Thread.sleep(2000);
