@@ -1,0 +1,35 @@
+name: PEITA_AUTO_WIN_CHROME
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '15 * * * *'
+env:
+     TWILIO_ACCOUNT_SID: ACa9f46cddfd842c87ccc309b2c793fe4c  
+    
+jobs:
+  NTV_AUTO:
+
+    runs-on: windows-latest
+    env:
+     TWILIO_AUTH_TOKEN: 9e3c161b4cca9dea20c83c97aa0473d2
+     
+    steps:
+    - uses: browser-actions/setup-chrome@latest
+    - uses: actions/checkout@v2
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+    
+        
+      with:
+        chromedriver-version: '99.0.4844.51'
+        java-version: '1.8'
+        server-id: github 
+        settings-path: ${{ github.workspace }} 
+
+
+    - name: Testando
+      run: mvn -B package --file pom.xml test
