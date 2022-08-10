@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import org.apache.commons.mail.EmailException;
+import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -51,10 +53,6 @@ public class verificarCamisaTest {
 		options.addArguments("--headless=chrome");
 		// options.addArguments("start-maximized");
 		options.addArguments("disable-infobars");
-		// options.addArguments("--disable-extensions");
-		// options.addExtensions(new File("C:\\setProfile\\extension_1_3_1_0.crx"));
-		// options.addExtensions(new File("extension_1_3_1_0.crx"));
-
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
@@ -89,8 +87,8 @@ public class verificarCamisaTest {
 //		options.addArguments("browserVersion", "99");
 //		options.addArguments("platformName", "Windows 10");
 
-		// options.addArguments("--user-agent=\"Mozilla/99.0.4844.51 (X11; Linux x86_64)
-		// AppleWebKit/537.36 (KHTML,like Gecko) Chrome/99.0.4844.51 Safari/537.36\"");
+		options.addArguments(
+				"--user-agent=\"Mozilla/99.0.4844.51 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/99.0.4844.51 Safari/537.36\"");
 		// options.addArguments("--incognito");
 		// driver = new ChromeDriver(options);
 		// driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
@@ -137,10 +135,14 @@ public class verificarCamisaTest {
 		driver.findElement(By.id("pass")).sendKeys("@AnnaIra838383");
 		driver.findElement(By.id("loginbutton")).click();
 
-		Thread.sleep(10000);
-		driver.findElement(
-				By.cssSelector("button[Class=\"gl-cta gl-cta--primary gl-cta--full-width gl-align-self-center\"]"))
-				.click();
+		Thread.sleep(4000);
+
+		@SuppressWarnings("deprecation")
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[.='Ir para sua conta']")));
+
+		driver.findElement(By.xpath("//*[.='Ir para sua conta']")).click();
+
 		Thread.sleep(3000);
 		driver.findElement(By.id("ORDER")).click();
 		driver.findElement(By.cssSelector("a[href=\"/order-tracker\"]")).click();
@@ -153,7 +155,7 @@ public class verificarCamisaTest {
 		Thread.sleep(500);
 		driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//*[.='Fazer troca ou devolu��o']")).click();
+		driver.findElement(By.xpath("//*[.='Fazer troca ou devolução']")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//*[.='TROCA']")).click();
 
@@ -162,7 +164,6 @@ public class verificarCamisaTest {
 			WebElement informacao = driver.findElement(By.cssSelector("p[class=\"gl-no-margin-bottom\"]"));
 			String texto = informacao.getText();
 
-			
 			if (texto == null && texto.isEmpty() | texto != "Esgotado") {
 
 				String mensagem = "MANO OLHA LA SE DA PRA TROCAR";
@@ -187,4 +188,12 @@ public class verificarCamisaTest {
 		}
 
 	}
+
+	@AfterEach
+	public void fechar() {
+
+		driver.close();
+
+	}
+
 }
