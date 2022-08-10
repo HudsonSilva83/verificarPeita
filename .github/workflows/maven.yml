@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '15 * * * *'
+    - cron: '*/15 * * * *'
 env:
      TWILIO_ACCOUNT_SID: ACa9f46cddfd842c87ccc309b2c793fe4c  
     
