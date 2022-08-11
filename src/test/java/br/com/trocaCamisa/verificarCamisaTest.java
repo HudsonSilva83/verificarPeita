@@ -169,9 +169,11 @@ public class verificarCamisaTest {
 
 			if (texto == null && texto.isEmpty() | texto != "Esgotado") {
 
-				String mensagem = "MANO OLHA LA SE DA PRA TROCAR";
+				String mensagem = "MANO OLHA LA SE DA PRA TROCAR ";
+				String site = "https://www.adidas.com.br";
+				String pedido= "ABR12677669";
 				whats wts = new whats();
-				wts.mensagem(mensagem);
+				wts.mensagem(mensagem + " " + site + " " + pedido);
 
 			} else {
 
@@ -184,9 +186,11 @@ public class verificarCamisaTest {
 
 		} catch (Exception e) {
 
-			String mensagem = "MANO OLHA LA DE DA PRA TROCAR pq deu um erro estranho";
+			String mensagem = "MANO OLHA LA SE DA PRA TROCAR Pq deu um erro estranho";
+			String site = "https://www.adidas.com.br";
+			String pedido= "ABR12677669";
 			whats wts = new whats();
-			wts.mensagem(mensagem);
+			wts.mensagem(mensagem + " " + site + " " + pedido);
 
 		}
 
