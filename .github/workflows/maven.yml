@@ -11,7 +11,7 @@ env:
      TWILIO_ACCOUNT_SID: ACa9f46cddfd842c87ccc309b2c793fe4c  
     
 jobs:
-  NTV_AUTO:
+  PEITA_AUTO:
 
     runs-on: windows-latest
     env:
@@ -31,5 +31,5 @@ jobs:
         settings-path: ${{ github.workspace }} 
 
 
-    - name: Testando
+    - name: Verificando
       run: mvn -B package --file pom.xml test
