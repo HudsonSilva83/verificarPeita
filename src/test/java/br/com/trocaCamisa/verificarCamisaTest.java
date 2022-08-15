@@ -32,6 +32,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import br.com.iptv.auto.NotificarPorEmail;
 import br.com.trocaCamisa.*;
 
 public class verificarCamisaTest {
@@ -48,7 +49,7 @@ public class verificarCamisaTest {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
-		options.addArguments("--headless=chrome");
+		//options.addArguments("--headless=chrome");
 		// options.addArguments("start-maximized");
 		options.addArguments("disable-infobars");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -141,10 +142,10 @@ public class verificarCamisaTest {
 
 		driver.findElement(By.xpath("//*[.='Ir para sua conta']")).click();
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		
 		@SuppressWarnings("deprecation")
-		WebDriverWait wait2 = new WebDriverWait(driver, 40);
+		WebDriverWait wait2 = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("ORDER")));
 		
 		driver.findElement(By.id("ORDER")).click();
@@ -189,6 +190,10 @@ public class verificarCamisaTest {
 			String mensagem = "MANO OLHA LA SE DA PRA TROCAR Pq deu um erro estranho";
 			String site = "https://www.adidas.com.br";
 			String pedido= "ABR12677669";
+			
+			NotificarPorEmail email = new NotificarPorEmail();
+			email.EnviarEmail(mensagem);
+			
 			whats wts = new whats();
 			wts.mensagem(mensagem + " " + site + " " + pedido);
 
