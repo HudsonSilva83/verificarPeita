@@ -32,7 +32,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import br.com.iptv.auto.NotificarPorEmail;
 import br.com.trocaCamisa.*;
 
 public class verificarCamisaTest {
